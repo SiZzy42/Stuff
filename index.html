@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<parameter name="html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XenoAI | Professional AI Aimbot Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        body { background-color: #050505; color: #e4e4e7; }
+        
+        /* Glass effect */
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-hover:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(124, 58, 237, 0.3); }
+        
+        /* Gradient & Glow */
+        .purple-glow { box-shadow: 0 0 100px -20px rgba(124, 58, 237, 0.15); }
+        .cyan-glow { box-shadow: 0 0 100px -20px rgba(34, 211, 238, 0.15); }
+        .text-glow { text-shadow: 0 0 20px rgba(167, 139, 250, 0.3); }
+        .gradient-text { background: linear-gradient(to right, #fff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Animations */
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Cards */
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); border-color: rgba(139, 92, 246, 0.5); }
+        
+        /* Badges */
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-pro { background: rgba(139, 92, 246, 0.1); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .badge-advanced { background: rgba(236, 72, 153, 0.1); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        
+        /* Buttons */
+        .btn-primary { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
+        .btn-primary:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); transform: translateY(-2px); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.2s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(139, 92, 246, 0.5); }
+    </style>
+</head>
+<body class="antialiased selection:bg-violet-500/30 selection:text-violet-200 overflow-x-hidden">
+
+    <!-- Fixed Background -->
+    <div class="fixed top-0 w-full h-screen -z-10 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 z-50 w-full border-b border-white/5 bg-black/50 backdrop-blur-xl">
+        <div class="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity" onclick="scrollToTop()">
+                <svg class="h-8 w-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Purple gradient background -->
+                    <defs>
+                        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="64" height="64" rx="8" fill="url(#purpleGrad)"/>
+                    <!-- Bold X -->
+                    <line x1="16" y1="16" x2="48" y2="48" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                    <line x1="48" y1="16" x2="16" y2="48" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+                <span class="font-bold tracking-tight text-white text-lg">XenoAI</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </div>
+            <a href="https://discord.gg/JcTgPw6N7k" target="_blank" class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white transition-all hover:bg-violet-600/20 hover:border-violet-500/50">
+                <i data-lucide="shopping-cart" class="h-3.5 w-3.5"></i>
+                <span>Buy Now</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-white/5 px-6 pt-24">
+        <div class="relative z-10 flex flex-col items-center max-w-5xl mx-auto text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-3 py-1">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
+                </span>
+                <span class="text-xs font-medium text-violet-200 tracking-wide">AI AIMBOT THAT LEARNS YOUR PLAY STYLE</span>
+            </div>
+            
+            <h1 class="mb-6 text-5xl font-bold tracking-tight text-white md:text-7xl">
+                Aim Like <br>
+                <span class="gradient-text">Your Best Self</span>
+            </h1>
+            
+            <p class="mb-10 max-w-2xl text-lg text-zinc-400 leading-relaxed">
+                XenoAI records your real human movement patterns and trains an AI model that replicates your exact aim style. Faster, more consistent, completely undetectable.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center mb-16">
+                <a href="#pricing" class="btn-primary flex items-center justify-center gap-2">
+                    <span>View Pricing</span>
+                    <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                </a>
+                <a href="#features" class="btn-secondary flex items-center justify-center gap-2">
+                    <span>See How It Works</span>
+                </a>
+            </div>
+
+            <!-- Hero Stats -->
+            <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+                <div class="glass p-5 rounded-xl card-hover">
+                    <div class="flex items-center gap-2 mb-3 text-violet-400">
+                        <i data-lucide="brain" class="h-4 w-4"></i>
+                        <h3 class="text-xs font-semibold uppercase tracking-wider">AI Training</h3>
+                    </div>
+                    <p class="text-2xl font-bold text-white">Records Your Play</p>
+                    <p class="text-xs text-zinc-500 mt-1">Learns Your Exact Style</p>
+                </div>
+
+                <div class="glass p-5 rounded-xl card-hover">
+                    <div class="flex items-center gap-2 mb-3 text-cyan-400">
+                        <i data-lucide="zap" class="h-4 w-4"></i>
+                        <h3 class="text-xs font-semibold uppercase tracking-wider">Speed</h3>
+                    </div>
+                    <p class="text-2xl font-bold text-white">144+ FPS</p>
+                    <p class="text-xs text-zinc-500 mt-1">Zero Performance Impact</p>
+                </div>
+
+                <div class="glass p-5 rounded-xl card-hover">
+                    <div class="flex items-center gap-2 mb-3 text-emerald-400">
+                        <i data-lucide="shield-check" class="h-4 w-4"></i>
+                        <h3 class="text-xs font-semibold uppercase tracking-wider">Safety</h3>
+                    </div>
+                    <p class="text-2xl font-bold text-white">Completely Undetected</p>
+                    <p class="text-xs text-zinc-500 mt-1">Your Playstyle = Legit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works: Movement Recording -->
+    <section id="features" class="py-24 px-6 border-b border-white/5 bg-zinc-950">
+        <div class="mx-auto max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">How XenoAI Learns Your Play Style</h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto">Record your natural aim movements. Our AI learns and replicates your exact technique.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch mb-16">
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="glass p-6 rounded-xl card-hover border border-white/10">
+                        <div class="flex items-start gap-4">
+                            <div class="h-10 w-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 font-bold flex-shrink-0">1</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Record Your Real Aim</h3>
+                                <p class="text-sm text-zinc-400">Start a recording session during normal gameplay. XenoAI captures every movement, reaction, and micro-adjustment you make. Pure, unfiltered human aim data.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="glass p-6 rounded-xl card-hover border border-white/10">
+                        <div class="flex items-start gap-4">
+                            <div class="h-10 w-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 font-bold flex-shrink-0">2</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Train AI Model</h3>
+                                <p class="text-sm text-zinc-400">The AI learns your movement patterns: reaction time, aim speed, micro-corrections, hesitation, muscle memory. Creates a personalized model of how YOU aim.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="glass p-6 rounded-xl card-hover border border-white/10">
+                        <div class="flex items-start gap-4">
+                            <div class="h-10 w-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 font-bold flex-shrink-0">3</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Enable AI Aimbot</h3>
+                                <p class="text-sm text-zinc-400">Activate the trained model. XenoAI now aims exactly like you—with all your natural habits, quirks, and timing. Faster and more consistent than you could ever be.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="glass p-6 rounded-xl card-hover border border-white/10">
+                        <div class="flex items-start gap-4">
+                            <div class="h-10 w-10 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 font-bold flex-shrink-0">4</div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Dominate Undetected</h3>
+                                <p class="text-sm text-zinc-400">Anti-cheat systems see your natural aim signature. No red flags. No detection. Just you, but better. Your personal playstyle is your invisibility cloak.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Visual - Process Diagram & Stats -->
+                <div class="flex flex-col justify-between">
+                    <!-- Process Flow Diagram -->
+                    <div class="glass p-8 rounded-2xl border border-violet-500/20 bg-gradient-to-b from-violet-900/10 to-transparent h-full">
+                        <h3 class="text-xl font-bold text-white mb-8 text-center">Your AI Training Journey</h3>
+                        
+                        <!-- Flow Diagram -->
+                        <div class="space-y-4">
+                            <!-- Box 1: Record -->
+                            <div class="relative">
+                                <div class="glass p-4 rounded-lg border border-violet-500/30 bg-violet-500/5">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i data-lucide="video" class="h-5 w-5 text-violet-400"></i>
+                                        <span class="text-sm font-bold text-white">Record Gameplay</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400">Pure human movement data</p>
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <i data-lucide="arrow-down" class="h-5 w-5 text-violet-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Box 2: Extract -->
+                            <div class="relative">
+                                <div class="glass p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/5">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i data-lucide="zap" class="h-5 w-5 text-cyan-400"></i>
+                                        <span class="text-sm font-bold text-white">Extract Patterns</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400">Reaction times, speeds, quirks</p>
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <i data-lucide="arrow-down" class="h-5 w-5 text-cyan-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Box 3: Train -->
+                            <div class="relative">
+                                <div class="glass p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i data-lucide="brain" class="h-5 w-5 text-emerald-400"></i>
+                                        <span class="text-sm font-bold text-white">Train Neural Network</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400">Create your AI model</p>
+                                </div>
+                                <div class="flex justify-center mt-2">
+                                    <i data-lucide="arrow-down" class="h-5 w-5 text-emerald-400"></i>
+                                </div>
+                            </div>
+
+                            <!-- Box 4: Deploy -->
+                            <div class="relative">
+                                <div class="glass p-4 rounded-lg border border-pink-500/30 bg-pink-500/5">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <i data-lucide="rocket" class="h-5 w-5 text-pink-400"></i>
+                                        <span class="text-sm font-bold text-white">Deploy & Dominate</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400">Aim like yourself, but perfect</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Stats -->
+                        <div class="mt-8 pt-6 border-t border-white/10 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-zinc-400 uppercase tracking-wider">Data Points Captured</span>
+                                <span class="text-lg font-bold text-violet-400">1000K+</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-zinc-400 uppercase tracking-wider">Training Time</span>
+                                <span class="text-lg font-bold text-cyan-400">2-5 min</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-zinc-400 uppercase tracking-wider">Accuracy</span>
+                                <span class="text-lg font-bold text-emerald-400">99.2%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-zinc-400 uppercase tracking-wider">Detection Risk</span>
+                                <span class="text-lg font-bold text-pink-400">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pro Benefits Box -->
+                    <div class="glass p-6 rounded-xl border border-pink-500/20 bg-gradient-to-b from-pink-900/10 to-transparent mt-6">
+                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="sparkles" class="h-4 w-4 text-pink-400"></i>
+                            Pro Tier Unlocks
+                        </h4>
+                        <ul class="space-y-2 text-xs">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="h-3 w-3 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-zinc-300">Record unlimited hours</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="h-3 w-3 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-zinc-300">Train 3 AI models</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="h-3 w-3 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-zinc-300">All 4 aimbot modes</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="h-3 w-3 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-zinc-300">Custom fine-tuning</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+                <!-- Why This Works -->
+                <div class="space-y-6">
+                    <div class="glass p-8 rounded-2xl border border-violet-500/20 bg-gradient-to-b from-violet-900/10 to-transparent">
+                        <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="zap" class="h-6 w-6 text-violet-400"></i>
+                            Why This Beats Everything Else
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-white font-semibold mb-1">❌ Generic Aimbots</p>
+                                <p class="text-xs text-zinc-400">Use the same movement for everyone. Anti-cheat detects the pattern instantly. You get banned.</p>
+                            </div>
+                            <div class="pt-3 border-t border-white/10">
+                                <p class="text-white font-semibold mb-1">✅ XenoAI with Your Signature</p>
+                                <p class="text-xs text-zinc-400">Your unique aim pattern. Your reaction times. Your mistakes. Anti-cheat sees a real player. You stay clean.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass p-8 rounded-2xl border border-white/10">
+                        <h3 class="text-xl font-bold text-white mb-4">What Gets Recorded</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-zinc-300"><strong>Aim Speed:</strong> How fast/slow you track targets</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-zinc-300"><strong>Reaction Times:</strong> Your delay from target appearance to aim</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-zinc-300"><strong>Micro Corrections:</strong> Small adjustments when settling on targets</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-zinc-300"><strong>Movement Patterns:</strong> Your natural aiming quirks and habits</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-zinc-300"><strong>Hesitation:</strong> Natural pauses and recovery between targets</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                <span class="text-sm text-zinc-300"><strong>Fatigue Simulation:</strong> How your aim degrades over time</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 mb-4">
+                        <i data-lucide="video" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Real-Time Recording</h3>
+                    <p class="text-zinc-400 text-sm">Record gameplay footage of your aim (Pro only). AI analyzes every pixel movement. No artificial training data—pure human aim.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4">
+                        <i data-lucide="brain" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">AI Model Training</h3>
+                    <p class="text-zinc-400 text-sm">Train custom neural networks on your playstyle (Pro only). Create multiple models for different games and situations.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
+                        <i data-lucide="crosshair" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Triggerbot</h3>
+                    <p class="text-zinc-400 text-sm">Auto-fire when crosshair is on target. Fully configurable delay, radius, and confidence threshold. Works with all games.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 mb-4">
+                        <i data-lucide="palette" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">HSV Color Filtering</h3>
+                    <p class="text-zinc-400 text-sm">Advanced HSV color detection to isolate enemies. Filter by hue, saturation, value. Perfect for any game lighting.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400 mb-4">
+                        <i data-lucide="lock" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Lock-On System</h3>
+                    <p class="text-zinc-400 text-sm">Smart target locking with configurable distance and frame loss tolerance. Stays locked on targets during brief occlusion.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4">
+                        <i data-lucide="sliders" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sensitivity Calibration</h3>
+                    <p class="text-zinc-400 text-sm">Match your in-game mouse sensitivity exactly. Auto-calibration tools ensure pixel-perfect accuracy. All DPI settings supported.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
+                        <i data-lucide="keyboard" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Custom Hotkeys</h3>
+                    <p class="text-zinc-400 text-sm">Fully customizable hotkeys (Pro only). Bind start, stop, toggle to any key. Per-profile hotkey settings.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 mb-4">
+                        <i data-lucide="target" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Custom Class Selection</h3>
+                    <p class="text-zinc-400 text-sm">Define custom target labels per game. Target specific classes (head vs body). Game-specific configurations.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 mb-4">
+                        <i data-lucide="hard-drive" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Session Recording</h3>
+                    <p class="text-zinc-400 text-sm">Save all gameplay sessions for later analysis. Review your aimbot performance and training accuracy.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 mb-4">
+                        <i data-lucide="bar-chart-2" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Real-Time Stats</h3>
+                    <p class="text-zinc-400 text-sm">Live FPS counter, detection debug view, device status. Visual feedback for target locking and performance metrics.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4">
+                        <i data-lucide="save" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Profile System</h3>
+                    <p class="text-zinc-400 text-sm">Save and load unlimited profiles (Pro: unlimited, Basic: 2 per game). One-click game switching with full settings persistence.</p>
+                </div>
+
+                <div class="glass p-8 rounded-2xl card-hover border border-white/10">
+                    <div class="h-12 w-12 rounded-lg bg-violet-500/10 flex items-center justify-center text-violet-400 mb-4">
+                        <i data-lucide="zap" class="h-6 w-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Proximity-Aware Locking</h3>
+                    <p class="text-zinc-400 text-sm">Smart detection when already close to target—automatically reduces micro-corrections and eliminates overshoot. Clean, tight lock-in with zero jitter at close range.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 px-6 border-b border-white/5">
+        <div class="mx-auto max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto">Choose the edition that fits your needs. All plans include full AI training and recording.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+                
+                <!-- Basic Tier -->
+                <div class="glass p-8 rounded-2xl border border-white/10 card-hover flex flex-col">
+                    <div class="mb-4">
+                        <span class="badge badge-pro">Basic Edition</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2">Basic</h3>
+                    <p class="text-zinc-500 text-sm mb-8">Essential aimbot features</p>
+                    
+                    <div class="mb-8">
+                        <p class="text-xs text-zinc-500 mb-2">Starts at</p>
+                        <p class="text-5xl font-bold text-white">$4.99</p>
+                        <p class="text-xs text-zinc-500 mt-1">per week</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">AI aimbot with basic humanization</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Normal aimbot mode</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Gravity & reaction time simulation</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">All USB device support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">2 saved profiles per game</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Community Discord support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">CUDA & DirectML support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="h-5 w-5 text-zinc-600 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-500">Record your playstyle</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="h-5 w-5 text-zinc-600 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-500">AI model training</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="h-5 w-5 text-zinc-600 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-500">Bezier Curves mode</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="h-5 w-5 text-zinc-600 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-500">Silent Aim mode</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="h-5 w-5 text-zinc-600 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-500">WindMouse extreme</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://discord.gg/JcTgPw6N7k" target="_blank" class="btn-secondary w-full text-center font-semibold">
+                        Buy Basic
+                    </a>
+                </div>
+
+                <!-- Pro Tier -->
+                <div class="glass p-8 rounded-2xl border border-pink-500/30 card-hover flex flex-col relative overflow-hidden bg-gradient-to-b from-pink-900/10 to-transparent">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-pink-600 to-rose-600 px-4 py-1 rounded-full">
+                        <span class="text-xs font-bold text-white uppercase">MOST POPULAR</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="badge badge-advanced">Pro Edition</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2">Pro</h3>
+                    <p class="text-zinc-500 text-sm mb-8">Full professional features</p>
+                    
+                    <div class="mb-8">
+                        <p class="text-xs text-zinc-500 mb-2">Starts at</p>
+                        <p class="text-5xl font-bold text-white">$20.99</p>
+                        <p class="text-xs text-zinc-500 mt-1">per week</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Everything in Basic</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Record your playstyle (unlimited hours)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Train custom AI models (3 simultaneous)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Bezier Curves aimbot mode</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Silent Aim (invisible to spectators)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">WindMouse extreme humanization</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Advanced fatigue simulation</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Unlimited profiles per game</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Priority Discord support (1hr response)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Beta features & early access</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Advanced AI fine-tuning tools</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                            <span class="text-sm text-zinc-300">Custom hotkey profiles</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://discord.gg/JcTgPw6N7k" target="_blank" class="btn-primary w-full text-center font-semibold">
+                        Buy Pro
+                    </a>
+                </div>
+
+                <!-- Right Side Comparison Visual -->
+                <div class="lg:col-span-1 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="glass p-6 rounded-2xl border border-white/10">
+                            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <i data-lucide="zap" class="h-5 w-5 text-yellow-400"></i>
+                                Why Choose Pro?
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-1"></i>
+                                    <span class="text-sm text-zinc-300"><strong>Record Your Play:</strong> Train AI on your exact style</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-1"></i>
+                                    <span class="text-sm text-zinc-300"><strong>3 AI Models:</strong> Different setups for different games</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-1"></i>
+                                    <span class="text-sm text-zinc-300"><strong>Silent Aim:</strong> Invisible to spectators</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-1"></i>
+                                    <span class="text-sm text-zinc-300"><strong>All 4 Modes:</strong> Normal, Bezier, Silent, WindMouse</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="glass p-6 rounded-2xl border border-white/10">
+                            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <i data-lucide="trending-up" class="h-5 w-5 text-emerald-400"></i>
+                                Pro vs Basic
+                            </h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between text-zinc-300">
+                                    <span>Recording</span>
+                                    <span class="text-pink-400 font-semibold">Unlimited</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-300 border-t border-white/5 pt-2">
+                                    <span>AI Models</span>
+                                    <span class="text-pink-400 font-semibold">3 (vs 0)</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-300 border-t border-white/5 pt-2">
+                                    <span>Aimbot Modes</span>
+                                    <span class="text-pink-400 font-semibold">4 (vs 1)</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-300 border-t border-white/5 pt-2">
+                                    <span>Profiles/Game</span>
+                                    <span class="text-pink-400 font-semibold">Unlimited</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-300 border-t border-white/5 pt-2">
+                                    <span>Price Difference</span>
+                                    <span class="text-emerald-400 font-semibold">+$16/week</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass p-6 rounded-2xl border border-emerald-500/20 bg-gradient-to-b from-emerald-900/10 to-transparent">
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                <strong class="text-emerald-400">💡 Pro Tip:</strong> Pro tier breaks even after 1-2 weeks of dominating. Most players upgrade immediately after trying Basic.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Comparison Table -->
+            <div class="glass rounded-2xl p-8 border border-white/10 max-w-6xl mx-auto">
+                <h3 class="text-2xl font-bold text-white mb-8">Complete Feature Comparison</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-white/10">
+                                <th class="text-left py-4 px-4 text-xs font-semibold text-zinc-400 uppercase tracking-wider">Feature</th>
+                                <th class="text-center py-4 px-4 text-xs font-semibold text-violet-400 uppercase tracking-wider">Basic</th>
+                                <th class="text-center py-4 px-4 text-xs font-semibold text-pink-400 uppercase tracking-wider">Pro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">AI Aimbot with Humanization</td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Record Your Playstyle</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center text-emerald-400 text-sm font-semibold">Unlimited Hours</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Train Custom AI Models</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center text-emerald-400 text-sm font-semibold">3 Models</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Normal Mode</td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Bezier Curves Mode</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Silent Aim (Invisible)</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">WindMouse Extreme</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Advanced Fatigue Simulation</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Saved Profiles Per Game</td>
+                                <td class="text-center text-zinc-400 text-sm">2</td>
+                                <td class="text-center text-emerald-400 text-sm font-semibold">Unlimited</td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Custom Hotkey Profiles</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Advanced AI Fine-Tuning Tools</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Support Tier</td>
+                                <td class="text-center text-zinc-400 text-sm">Community</td>
+                                <td class="text-center text-pink-400 text-sm font-medium">Priority (1hr)</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="py-3 px-4 text-white font-medium">Beta Features & Early Access</td>
+                                <td class="text-center"><i data-lucide="x" class="h-4 w-4 text-zinc-600 mx-auto"></i></td>
+                                <td class="text-center"><i data-lucide="check" class="h-4 w-4 text-emerald-500 mx-auto"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 px-6 border-b border-white/5">
+        <div class="mx-auto max-w-3xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-white/10 rounded-lg bg-zinc-900/30 overflow-hidden">
+                    <details class="group p-6">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer list-none text-white hover:text-violet-400 transition-colors">
+                            How much gameplay do I need to record?
+                            <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="h-5 w-5"></i></span>
+                        </summary>
+                        <div class="text-zinc-400 text-sm mt-4 leading-relaxed">
+                            We recommend at least 30-60 minutes of clean gameplay for the AI to learn your unique aiming signature. The more data you provide, the more accurate the model becomes. Advanced users can record unlimited hours to train multiple models.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-zinc-900/30 overflow-hidden">
+                    <details class="group p-6">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer list-none text-white hover:text-violet-400 transition-colors">
+                            Will the AI exactly copy my playstyle?
+                            <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="h-5 w-5"></i></span>
+                        </summary>
+                        <div class="text-zinc-400 text-sm mt-4 leading-relaxed">
+                            Yes. The AI learns your exact aim patterns, reaction times, hesitations, and micro-corrections. When enabled, it aims identically to you—but faster and more consistent. This is actually safer because anti-cheat systems recognize it as your natural playstyle.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-zinc-900/30 overflow-hidden">
+                    <details class="group p-6">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer list-none text-white hover:text-violet-400 transition-colors">
+                            Is this undetectable?
+                            <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="h-5 w-5"></i></span>
+                        </summary>
+                        <div class="text-zinc-400 text-sm mt-4 leading-relaxed">
+                            Yes. Because the aimbot replicates YOUR unique aiming signature, anti-cheat systems see your natural behavior. Generic aimbots get caught because they use the same movement pattern for everyone. Your AI model is personal to you, making it invisible.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-zinc-900/30 overflow-hidden">
+                    <details class="group p-6">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer list-none text-white hover:text-violet-400 transition-colors">
+                            What's the difference between Basic and Pro?
+                            <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="h-5 w-5"></i></span>
+                        </summary>
+                        <div class="text-zinc-400 text-sm mt-4 leading-relaxed">
+                            <strong>Basic ($4.99):</strong> Full aimbot with Normal mode only. Gravity & reaction time humanization. All USB device support. Perfect for casual players. <strong>Cannot record or train AI models.</strong><br><br>
+                            <strong>Pro ($14.99):</strong> Everything in Basic PLUS: unlimited recording, 3 custom AI models, Bezier + Silent + WindMouse modes, advanced fatigue sim, unlimited profiles, custom hotkeys, priority support, and beta features. Designed for competitive players.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-zinc-900/30 overflow-hidden">
+                    <details class="group p-6">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer list-none text-white hover:text-violet-400 transition-colors">
+                            Do I need special hardware?
+                            <span class="transition group-open:activate-180"><i data-lucide="chevron-down" class="h-5 w-5"></i></span>
+                        </summary>
+                        <div class="text-zinc-400 text-sm mt-4 leading-relaxed">
+                            No. XenoAI runs on any Windows 10/11 machine with a GPU (NVIDIA, AMD, Intel, Apple). We support CUDA and DirectML for maximum compatibility. A USB device (MAKCU, CH340, etc.) is recommended for 2-PC setup safety.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-zinc-900/30 overflow-hidden">
+                    <details class="group p-6">
+                        <summary class="flex justify-between items-center font-semibold cursor-pointer list-none text-white hover:text-violet-400 transition-colors">
+                            How do I purchase and get my key?
+                            <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="h-5 w-5"></i></span>
+                        </summary>
+                        <div class="text-zinc-400 text-sm mt-4 leading-relaxed">
+                            Join our Discord and open a purchase ticket. Select your tier (Standard or Advanced), complete payment, and receive your license key instantly via DM. Full onboarding guide and recording setup provided.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials Section -->
+    <section class="py-24 px-6 border-t border-white/5 bg-zinc-950">
+        <div class="mx-auto max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">Trusted by Thousands</h2>
+                <p class="text-zinc-400">Join competitive players who've ranked up with XenoAI.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Testimonial 1 -->
+                <div class="glass p-6 rounded-xl border border-white/10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-sm font-semibold text-white">Pro Player</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded">Verified</span>
+                    </div>
+                    <p class="text-sm text-zinc-300 mb-4">"Ranked up 3 tiers in 2 weeks. The AI learns exactly how I play. Anti-cheat hasn't flagged anything."</p>
+                    <div class="flex items-center gap-1">
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass p-6 rounded-xl border border-white/10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-sm font-semibold text-white">Casual Gamer</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded">Verified</span>
+                    </div>
+                    <p class="text-sm text-zinc-300 mb-4">"Finally competitive in my friend group. The recording feature is insane—it literally copies my style."</p>
+                    <div class="flex items-center gap-1">
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass p-6 rounded-xl border border-white/10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-sm font-semibold text-white">Streamer</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded">Verified</span>
+                    </div>
+                    <p class="text-sm text-zinc-300 mb-4">"Been using for 3 months. No bans, no VAC issues. Better aim than I had before. Totally clean."</p>
+                    <div class="flex items-center gap-1">
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="glass rounded-2xl p-8 border border-white/10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <p class="text-4xl font-bold text-cyan-400 mb-2">0</p>
+                        <p class="text-sm text-zinc-400">Bans Reported</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-bold text-emerald-400 mb-2">4.9★</p>
+                        <p class="text-sm text-zinc-400">Average Rating</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-bold text-pink-400 mb-2">24/7</p>
+                        <p class="text-sm text-zinc-400">Discord Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk-Free Trial Section -->
+    <section class="py-24 px-6 border-t border-white/5 bg-black">
+        <div class="mx-auto max-w-5xl">
+            <div class="glass rounded-2xl p-12 border border-emerald-500/20 bg-gradient-to-b from-emerald-900/10 to-transparent">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Start with Basic Risk-Free</h2>
+                        <p class="text-zinc-400 mb-6">Not sure if XenoAI is right for you? Start with Basic tier for just $4.99/week. No credit card tricks, cancel anytime. Most users upgrade to Pro within 1-2 weeks.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400"></i>
+                                <span class="text-white">Full aimbot included</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400"></i>
+                                <span class="text-white">Cancel anytime</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400"></i>
+                                <span class="text-white">Instant Discord support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-emerald-400"></i>
+                                <span class="text-white">7-day money back guarantee</span>
+                            </li>
+                        </ul>
+                        <a href="https://discord.gg/JcTgPw6N7k" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2">
+                            Start with Basic
+                            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                        </a>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="glass p-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5">
+                            <h3 class="text-lg font-bold text-white mb-3">Basic is Perfect For:</h3>
+                            <ul class="space-y-2 text-sm text-zinc-300">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                    Testing if aimbot is for you
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                    Casual competitive play
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                    Trying one game
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                                    Budget players
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="glass p-6 rounded-xl border border-pink-500/30 bg-pink-500/5">
+                            <h3 class="text-lg font-bold text-white mb-3">Pro is Worth It For:</h3>
+                            <ul class="space-y-2 text-sm text-zinc-300">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-0.5"></i>
+                                    Serious rank climbing
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-0.5"></i>
+                                    Multiple game setups
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-0.5"></i>
+                                    Custom AI training
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="arrow-right" class="h-4 w-4 text-pink-400 flex-shrink-0 mt-0.5"></i>
+                                    Competitive players
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-zinc-950 to-black">
+        <div class="mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">Ready to Dominate?</h2>
+            <p class="text-lg text-zinc-400 mb-8">Join thousands of players using XenoAI to rank up with their natural playstyle amplified. Start with Basic—upgrade to Pro when you're ready.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://discord.gg/JcTgPw6N7k" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 text-lg px-8 py-4">
+                    <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                    <span>Buy Now on Discord</span>
+                </a>
+                <a href="#pricing" class="btn-secondary inline-flex items-center justify-center gap-2 text-lg px-8 py-4">
+                    <i data-lucide="help-circle" class="h-5 w-5"></i>
+                    <span>See Pricing</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black py-12 px-6">
+        <div class="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <div class="flex items-center gap-2 mb-2">
+                    <svg class="h-8 w-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Purple gradient background -->
+                        <defs>
+                            <linearGradient id="purpleGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="64" height="64" rx="8" fill="url(#purpleGradFooter)"/>
+                        <!-- Bold X -->
+                        <line x1="16" y1="16" x2="48" y2="48" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="48" y1="16" x2="16" y2="48" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                    </svg>
+                    <span class="font-bold text-white">XenoAI</span>
+                </div>
+                <p class="text-xs text-zinc-500 mt-2">Professional AI Aimbot Software</p>
+                <p class="text-[10px] text-zinc-600 mt-1">© 2026 XenoAI. All rights reserved.</p>
+            </div>
+            <a href="https://discord.gg/JcTgPw6N7k" target="_blank" class="text-zinc-500 hover:text-white transition-colors text-sm flex items-center gap-2">
+                <i data-lucide="message-circle" class="h-4 w-4"></i>
+                Discord Support
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if(element) {
+                const offset = 80;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = element.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>
