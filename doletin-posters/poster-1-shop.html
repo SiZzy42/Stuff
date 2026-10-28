@@ -1,0 +1,109 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Doletin Mechanical – Shop</title>
+<style>
+@font-face { font-family: Anton; src: url(fonts/Anton.ttf); }
+@font-face { font-family: Oswald; font-weight: 400; src: url(fonts/Oswald-400.ttf); }
+@font-face { font-family: Oswald; font-weight: 600; src: url(fonts/Oswald-600.ttf); }
+@font-face { font-family: Oswald; font-weight: 700; src: url(fonts/Oswald-700.ttf); }
+@font-face { font-family: Barlow; font-weight: 500; src: url(fonts/Barlow-500.ttf); }
+@font-face { font-family: Barlow; font-weight: 700; src: url(fonts/Barlow-700.ttf); }
+@font-face { font-family: Barlow; font-weight: 800; src: url(fonts/Barlow-800.ttf); }
+@font-face { font-family: Archivo; src: url(fonts/ArchivoBlack.ttf); }
+
+@page { size: 18.25in 24.25in; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 18.25in; height: 24.25in; overflow: hidden; }
+.poster { position: relative; width: 18.25in; height: 24.25in; overflow: hidden; }
+
+:root { --ink:#16181b; --orange:#ff6b12; --steel:#c9ced6; --white:#f7f7f5; }
+.poster { background:
+    radial-gradient(ellipse at 50% 28%, #2b2f35 0%, #16181b 62%),
+    var(--ink); color: var(--white); }
+.poster::before { content:""; position:absolute; inset:0;
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 2px, transparent 2px 14px); }
+.hazard { position:absolute; left:0; right:0; height:0.95in;
+  background: repeating-linear-gradient(-45deg, var(--orange) 0 0.55in, #0d0e10 0.55in 1.1in); }
+.hazard.top { top:0; } .hazard.bot { bottom:0; }
+.inner { position:absolute; top:1.35in; bottom:1.35in; left:0.9in; right:0.9in;
+  display:flex; flex-direction:column; align-items:center; }
+.emblem { width:3.9in; height:3.9in; margin-top:0.05in; filter: drop-shadow(0 0.08in 0.12in rgba(0,0,0,.5)); }
+.name { font-family:Anton; font-size:300pt; line-height:0.86; letter-spacing:0.01em;
+  margin-top:0.25in; color:var(--white); text-shadow: 0 0.06in 0 #000; }
+.mech { font-family:Oswald; font-weight:600; font-size:96pt; letter-spacing:0.36em;
+  margin-right:-0.36em; line-height:1; color:var(--orange); margin-top:0.12in; }
+.tag { margin-top:0.4in; width:100%; background:var(--orange); color:#111;
+  font-family:Barlow; font-weight:800; font-size:58pt; text-align:center; letter-spacing:0.08em;
+  padding:0.12in 0 0.16in; transform: skewX(-8deg); }
+.tag span { display:inline-block; transform: skewX(8deg); }
+.services { margin-top:0.5in; width:100%; display:grid; grid-template-columns:repeat(3,1fr);
+  row-gap:0.36in; column-gap:0.3in; }
+.svc { display:flex; flex-direction:column; align-items:center; text-align:center; }
+.svc .icon { width:1.2in; height:1.2in; color:var(--orange); }
+.svc div { font-family:Barlow; font-weight:700; font-size:40pt; line-height:1.05; margin-top:0.12in;
+  text-transform:uppercase; letter-spacing:0.03em; }
+.cta { margin-top:auto; width:100%; text-align:center; }
+.cta .call { font-family:Oswald; font-weight:600; font-size:44pt; letter-spacing:0.3em; color:var(--steel); }
+.cta .phone { font-family:Anton; font-size:150pt; line-height:1; color:var(--orange); margin-top:0.04in; }
+.cta .meta { font-family:Barlow; font-weight:500; font-size:36pt; color:var(--steel); margin-top:0.18in; letter-spacing:0.02em; }
+</style></head><body><div class="poster">
+  <div class="hazard top"></div><div class="hazard bot"></div>
+  <div class="inner">
+    <svg class="emblem" viewBox="0 0 200 200">
+      <path d="M176.00 100.00 L191.87 104.95 L190.37 117.24 L173.78 118.24 L168.47 132.98 L180.62 144.32 L173.94 154.74 L158.56 148.44 L147.39 159.42 L153.41 174.91 L142.87 181.40 L131.74 169.05 L116.91 174.09 L115.61 190.67 L103.30 191.94 L98.64 175.99 L83.09 174.09 L74.73 188.46 L63.08 184.27 L65.80 167.87 L52.61 159.42 L38.85 168.74 L30.18 159.91 L39.74 146.31 L31.53 132.98 L15.08 135.40 L11.10 123.68 L25.61 115.58 L24.00 100.00 L8.13 95.05 L9.63 82.76 L26.22 81.76 L31.53 67.02 L19.38 55.68 L26.06 45.26 L41.44 51.56 L52.61 40.58 L46.59 25.09 L57.13 18.60 L68.26 30.95 L83.09 25.91 L84.39 9.33 L96.70 8.06 L101.36 24.01 L116.91 25.91 L125.27 11.54 L136.92 15.73 L134.20 32.13 L147.39 40.58 L161.15 31.26 L169.82 40.09 L160.26 53.69 L168.47 67.02 L184.92 64.60 L188.90 76.32 L174.39 84.42 Z M146 100 A46 46 0 1 0 54 100 A46 46 0 1 0 146 100 Z" fill="#ff6b12" fill-rule="evenodd"/>
+      <circle cx="100" cy="100" r="62" fill="none" stroke="#ff6b12" stroke-width="5"/>
+      <g color="#16181b" transform="translate(100 100) rotate(45) translate(-62 -62) scale(1.94)">
+        <g transform="translate(0 0)" stroke="#16181b" stroke-width="6">
+    <mask id="wma"><rect x="-10" y="-10" width="84" height="84" fill="#fff"/>
+      <rect x="27.5" y="-2" width="9" height="15" rx="1.5" fill="#000"/>
+      <circle cx="32" cy="55" r="3.2" fill="#000"/></mask>
+    <g mask="url(#wma)" fill="currentColor">
+      <circle cx="32" cy="12" r="11"/>
+      <rect x="27" y="14" width="10" height="44" rx="5"/>
+      <circle cx="32" cy="55" r="7"/>
+    </g></g></g>
+      <g color="#16181b" transform="translate(100 100) rotate(-45) translate(-62 -62) scale(1.94)">
+        <g stroke="#16181b" stroke-width="6">
+    <mask id="wmb"><rect x="-10" y="-10" width="84" height="84" fill="#fff"/>
+      <rect x="27.5" y="-2" width="9" height="15" rx="1.5" fill="#000"/>
+      <circle cx="32" cy="55" r="3.2" fill="#000"/></mask>
+    <g mask="url(#wmb)" fill="currentColor">
+      <circle cx="32" cy="12" r="11"/>
+      <rect x="27" y="14" width="10" height="44" rx="5"/>
+      <circle cx="32" cy="55" r="7"/>
+    </g></g></g>
+      <g color="#f7f7f5" transform="translate(100 100) rotate(45) translate(-62 -62) scale(1.94)">
+    <mask id="wmc"><rect x="-10" y="-10" width="84" height="84" fill="#fff"/>
+      <rect x="27.5" y="-2" width="9" height="15" rx="1.5" fill="#000"/>
+      <circle cx="32" cy="55" r="3.2" fill="#000"/></mask>
+    <g mask="url(#wmc)" fill="currentColor">
+      <circle cx="32" cy="12" r="11"/>
+      <rect x="27" y="14" width="10" height="44" rx="5"/>
+      <circle cx="32" cy="55" r="7"/>
+    </g></g>
+      <g color="#f7f7f5" transform="translate(100 100) rotate(-45) translate(-62 -62) scale(1.94)">
+    <mask id="wmd"><rect x="-10" y="-10" width="84" height="84" fill="#fff"/>
+      <rect x="27.5" y="-2" width="9" height="15" rx="1.5" fill="#000"/>
+      <circle cx="32" cy="55" r="3.2" fill="#000"/></mask>
+    <g mask="url(#wmd)" fill="currentColor">
+      <circle cx="32" cy="12" r="11"/>
+      <rect x="27" y="14" width="10" height="44" rx="5"/>
+      <circle cx="32" cy="55" r="7"/>
+    </g></g>
+    </svg>
+    <div class="name">DOLETIN</div>
+    <div class="mech">MECHANICAL</div>
+    <div class="tag"><span>HONEST REPAIRS · FAIR PRICES</span></div>
+    <div class="services"><div class="svc"><svg class="icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="8"/>
+        <circle cx="32" cy="17" r="1.5"/><circle cx="47" cy="32" r="1.5"/><circle cx="32" cy="47" r="1.5"/><circle cx="17" cy="32" r="1.5"/></g>
+        <path d="M44 9 A26 26 0 0 1 58 26" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/></svg><div>Brakes</div></div><div class="svc"><svg class="icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6 C26 16 14 28 14 40 a18 18 0 0 0 36 0 C50 28 38 16 32 6z"/>
+        <path d="M24 42 a8 8 0 0 0 8 8"/></g></svg><div>Oil Changes</div></div><div class="svc"><svg class="icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 44 A24 24 0 1 1 56 44"/><path d="M32 40 L44 24"/>
+        <circle cx="32" cy="40" r="3" fill="currentColor"/><path d="M14 30 l4 2 M32 18 v4 M50 30 l-4 2"/><path d="M20 54 h24"/></g></svg><div>Engine Diagnostics</div></div><div class="svc"><svg class="icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="25" stroke-width="8"/><circle cx="32" cy="32" r="9"/>
+        <path d="M32 23 V14 M40.5 35 l8 3 M23.5 35 l-8 3 M37 39.5 l5 7 M27 39.5 l-5 7"/></g></svg><div>Tires & Alignment</div></div><div class="svc"><svg class="icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="18" width="52" height="36" rx="4"/><path d="M14 18 v-6 h8 v6 M42 18 v-6 h8 v6"/>
+        <path d="M14 36 h10 M19 31 v10 M40 36 h10"/></g></svg><div>Batteries & Electrical</div></div><div class="svc"><svg class="icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 h36 M14 56 h36"/>
+        <path d="M32 8 v4 L46 16 L18 22 L46 28 L18 34 L46 40 L18 46 L32 50 v6"/></g></svg><div>Suspension & Steering</div></div></div>
+    <div class="cta">
+      <div class="call">CALL TODAY</div>
+      <div class="phone">(555) 123-4567</div>
+      <div class="meta">123 Main Street, Your Town<br>Mon–Fri 8am–6pm  ·  Sat 9am–2pm</div>
+    </div>
+  </div>
+</div></body></html>
